@@ -10,9 +10,13 @@
      flex: 15%;
      background-color: lightgray;
 }
-.menu {
-  flex:5%;
-  background-color: gray;
+.menu a{
+   padding: 15px 20px;
+   color:pink;
+}
+.menu hover{
+    background-color:lightgray;
+    color:black;
 }
 .content{
      flex:70%;

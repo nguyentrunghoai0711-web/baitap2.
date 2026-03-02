@@ -14,7 +14,7 @@
    padding: 15px 20px;
    color:black;
 }
-.menu hover{
+.menu a: hover{
     background-color:lightgray;
     color:black;
 }
@@ -30,5 +30,5 @@
 }
 .footer{
     flex:10%;
-    background-color:light gray ;
+    background-color:lightgray ;
 }

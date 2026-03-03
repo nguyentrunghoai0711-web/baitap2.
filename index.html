@@ -1,113 +1,173 @@
-<!DOCTYPE html>
-<html>
+<html class="fullsize">
 <head>
-    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet">
     <style>
-        /* Tối ưu hóa toàn bộ trang để không còn khoảng trống thừa */
+        /* style.css được nhúng trực tiếp để dễ tùy chỉnh */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
         }
 
-        body, html {
-            height: 100%;
-            background: #fff;
-            overflow: hidden; /* Ngăn thanh cuộn kép bên ngoài */
+        body {
+            background: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
         }
 
         .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 24px 24px 16px 16px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+        }
+
+        /* HEADER với BANNER cải tiến */
+        .header {
             width: 100%;
         }
 
-        /* BANNER - Giữ nguyên phong cách cũ nhưng bỏ bo góc container */
         .banner {
-            background: #003366; /* Màu xanh đậm như hình */
+            background-image: linear-gradient(90deg, rgba(0, 30, 60, 0.75) 0%, rgba(0, 60, 120, 0.6) 100%), 
+            url('contents/57328090_605827826563664_6756081408847904768_o_1 (1).jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            height: 200px; /* banner cao hơn, sang trọng */
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 4px solid #ffcc00;
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
+            transition: height 0.2s ease;
+        }
+
+        .banner-content {
             color: white;
-            padding: 30px 20px;
-            border-bottom: 5px solid #ffcc00;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.7), 0 0 20px rgba(255,215,0,0.5);
+            max-width: 800px;
+            backdrop-filter: blur(1px);
         }
 
         .school-name {
-            font-size: 2.2rem;
-            font-weight: bold;
-            line-height: 1.1;
-            border-left: 10px solid #ffcc00;
-            padding-left: 15px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            line-height: 1.2;
             text-transform: uppercase;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            border-left: 8px solid #ffcc00;
+            padding-left: 20px;
+            margin-bottom: 8px;
         }
 
         .specialty {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
+            font-weight: 400;
             font-style: italic;
-            margin-top: 10px;
-            padding-left: 25px;
+            text-shadow: 2px 2px 4px black;
+            font-family: 'Playfair Display', 'Georgia', serif;
+            letter-spacing: 1px;
+            padding-left: 28px;
+            color: #f0f9ff;
         }
 
-        /* MENU - Các nút bo tròn như hình bạn gửi */
+        /* MENU bo tròn, đẹp */
         .menu {
             background: #0b2b4f;
-            padding: 15px 10px;
+            padding: 14px 20px;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
+            border-bottom: 2px solid #ffcc00;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
 
         .menu a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            padding: 10px 25px;
-            border-radius: 30px;
-            border: 1px solid #4a6a8a;
-            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px 22px;
+            border-radius: 40px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(4px);
             transition: 0.3s;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-transform: capitalize;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         .menu a:hover {
             background: #ffcc00;
             color: #0b2b4f;
+            border-color: #ffcc00;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(255,204,0,0.3);
         }
 
-        /* Ô NỘI DUNG - Xóa bỏ hoàn toàn ô xám và xanh dương thừa */
+        /* CONTENT iframe */
         .content {
-            flex: 1; /* Tự động lấp đầy phần còn lại của màn hình */
-            width: 100%;
-            background: #fff;
+            background: #ffffff;
+            padding: 25px;
+            min-height: 500px;
+            flex: 1;
         }
 
         iframe {
             width: 100%;
             height: 100%;
+            min-height: 550px;
             border: none;
-            display: block;
+            border-radius: 16px;
+            background: #f8faff;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .footer {
+            background: #0a1e32;
+            height: 20px;
+            border-top: 3px solid #ffcc00;
+        }
+
+        /* Responsive nhẹ */
+        @media (max-width: 700px) {
+            .banner { height: 160px; padding: 0 20px; }
+            .school-name { font-size: 2rem; }
+            .specialty { font-size: 1.3rem; }
+            .menu a { font-size: 0.95rem; padding: 8px 14px; }
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="banner">
-        <div class="school-name">TRƯỜNG THPT<br>NGÔ QUYỀN<br>TPHCM</div>
-        <div class="specialty">Chuyên trang Tin học 12</div>
+    <div class="container">
+        <div class="header">
+            <div class="banner">
+                <div class="banner-content">
+                    <div class="school-name">TRƯỜNG THPT NGÔ QUYỀN TPHCM</div>
+                    <div class="specialty">Chuyên trang Tin học 12</div>
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <a href="contents/gioithieu.html" target="noidung">Gioi thieu</a>
+            <a href="contents/thoikhoabieu.html" target="noidung">Thoi khoa bieu</a>
+            <a href="contents/tinhoc12.html" target="noidung">Chuong trinh tin hoc 12</a>
+            <a href="contents/gioithieunghe.html" target="noidung">Gioi thieu nghe</a>
+        </div>
+        <div class="content">
+            <iframe name="noidung"></iframe>
+        </div>
+        <div class="footer"></div>
     </div>
-
-    <div class="menu">
-        <a href="contents/gioithieu.html" target="noidung">Giới thiệu</a>
-        <a href="contents/thoikhoabieu.html" target="noidung">Thời khóa biểu</a>
-        <a href="contents/tinhoc12.html" target="noidung">Tin học 12</a>
-        <a href="contents/gioithieunghe.html" target="noidung">Nghề nghiệp</a>
-    </div>
-
-    <div class="content">
-        <iframe name="noidung" src="contents/tinhoc12.html"></iframe>
-    </div>
-</div>
-
 </body>
-</html>
+    </html>

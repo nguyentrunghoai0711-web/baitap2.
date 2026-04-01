@@ -1,15 +1,23 @@
 <html>
-    <body>
-      <p id="kq"> </p>
-      <script>
-      let params= new URLSearchParams(window.location.search);
-      let ten= params.get("txtName");
-      let yk= params.get("txtYk")
-      document.getElementById("kq").innerHTML = "Cảm ơn bạn " + ten
-      + " đã góp ý" + "<br><br> Chúng tôi xin ghi nhận ý kiến của bạn như sau:<br>"
-      </script>
-      <form action="Bai7-NV1.html">
-      <input type= "submit" name="cmd" value="Back"
-      </form>
-  </body>
+<body>
+  <p id="kq"> </p>
+  <form action="Bai7-NV1.html">
+    <input type="submit" name="cmd" value="Back">
+  </form>
+
+  <script>
+    let params = new URLSearchParams(window.location.search);
+    let ten = params.get("txtTen");
+    let yk = params.get("txtComment");
+    
+    let displayText = "Cảm ơn bạn " + (ten ? ten : "bạn") 
+      + " đã góp ý" + "<br><br> Chúng tôi xin ghi nhận ý kiến của bạn như sau:<br>";
+    
+    if (yk) {
+      displayText += yk;
+    }
+    
+    document.getElementById("kq").innerHTML = displayText;
+  </script>
+</body>
 </html>
